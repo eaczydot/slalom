@@ -1,0 +1,19 @@
+I am developing a demo environent of a private company shareholder management platform.
+
+The platform will allow a private company to manage its shareholders, directors, and officers. It will also allow shareholders to manage their shares, dividends, and other relevant information.
+
+I would like you to develop a simple prototype of the platform exactly replicating the screenshots I will attach (note: these screenshots are from an iphone and I want the style adopted to be used in desktop view)
+- IMG_9020.PNG
+- IMG_9023.PNG
+- IMG_9022.PNG
+- IMG_9021.PNG
+
+These screenshots are from are for the company that I was to make a shareholder management platform for. Utilize their style and color scheme.
+- Consuling Industries and Industry Sectors We Serve.jpeg
+- Consulting Services To Your Needs_Slalom 
+- Consulting Services Unique To Your Needs _ Slalom · 11.00am · 09-04.jpeg
+- Consulting Services Unique To Your Needs _ Slalom selection hover view.jpeg
+- Locations.jpeg
+- slalom banner divider.png
+- Slalom Home _ Professional Services _ Business Consulting.jpeg
+Complete this project in its entirety

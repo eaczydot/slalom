@@ -1,0 +1,110 @@
+.header {
+    background-color: var(--card-background);
+    position: fixed;
+    top: 4px; /* Account for the multi-color line */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 64px;
+    font-family: var(--font-family);
+}
+
+.multi-color-line {
+    height: 4px;
+    background: linear-gradient(to right, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4), var(--gradient-5));
+    background-size: 200% 100%;
+    animation: gradient-shift 15s ease infinite;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+.logo {
+    flex-shrink: 0;
+}
+
+.slalom-logo {
+    height: 24px;
+    width: auto;
+}
+
+.header nav {
+    display: flex;
+    justify-content: center;
+}
+
+.header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.header nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s, background-color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    position: relative;
+    font-family: var(--font-family);
+}
+
+.header nav ul li a:hover {
+    background-color: var(--brand-color); /* Changed from var(--accent-color) to var(--brand-color) */
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(to right, var(--brand-color), var(--secondary-color), var(--gradient-3), var(--gradient-4), var(--gradient-5));
+    color: var(--text-color);
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        padding: 1rem;
+        height: auto;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .header nav {
+        width: 100%;
+    }
+
+    .header nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}

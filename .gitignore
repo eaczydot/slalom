@@ -9,9 +9,9 @@ IMG_9023.jpg
 Locations.jpeg
 Slalom Home * Professional Services * Business Consulting.jpeg
 
-# Ignore all JPEG files (optional, uncomment if needed)
-# *.jpeg
-# *.jpg
+Ignore all JPEG files (optional, uncomment if needed)
+ *.jpeg
+ *.jpg
 
 # Ignore all PNG files (optional, uncomment if needed)
 # *.png

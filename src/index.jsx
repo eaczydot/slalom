@@ -1,20 +1,10 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import App from './App';
+import './styles/index.css';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-try {
-  root.render(
-    process.env.NODE_ENV === 'production' ? (
-      <App />
-    ) : (
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    )
-  );
-} catch (error) {
-  console.error('Error rendering the app:', error);
-}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

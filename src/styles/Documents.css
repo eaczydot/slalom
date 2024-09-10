@@ -375,3 +375,119 @@
     align-self: flex-start;
   }
 }
+
+.document-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.document-list {
+  flex: 1;
+  max-width: 300px;
+}
+
+.document-viewer {
+  flex: 2;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.document-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--brand-color);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-action:hover {
+  background-color: var(--secondary-color);
+}
+
+.document-content {
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  padding: 1rem;
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .document-container {
+    flex-direction: column;
+  }
+
+  .document-list {
+    max-width: 100%;
+  }
+}
+
+.document-comments, .document-tags, .document-highlights {
+  margin-top: 1rem;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.document-comments h3, .document-tags h3, .document-highlights h3 {
+  margin-top: 0;
+  color: var(--brand-color);
+}
+
+.document-comments ul, .document-highlights ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.document-comments li, .document-highlights li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--card-background);
+  border-radius: 5px;
+}
+
+.document-tags .tag {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.document-content {
+  position: relative;
+}
+
+.highlight {
+  background-color: rgba(255, 255, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .document-actions {
+    flex-wrap: wrap;
+  }
+
+  .btn-action {
+    flex: 1 0 calc(50% - 0.5rem);
+  }
+}

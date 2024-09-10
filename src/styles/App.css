@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --brand-color: #0076A8;
-  --background-color: #002033;
-  --text-color: #FFFFFF;
-  --card-background: #003A5C;
-  --border-color: #004B73;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --accent-color: #00A9E0; /* Changed from #FF5A5F to #00A9E0 */
+  --brand-color: #0C64FA;
+  --background-color: #FFFFFF;
+  --text-color: #333333;
+  --card-background: #F0F4F8;
+  --border-color: #E1E8ED;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #83B4DE;
   --secondary-color: #00A9E0;
-  --gradient-1: #0076A8; /* Changed from #FF5A5F to #0076A8 */
-  --gradient-2: #00A9E0;
-  --gradient-3: #007A87;
-  --gradient-4: #8CE071;
-  --gradient-5: #004B73; /* Changed from #7B0051 to #004B73 */
+  --gradient-1: #0C64FA;
+  --gradient-2: #83B4DE;
+  --gradient-3: #00A9E0;
+  --gradient-4: #4CAF50;
+  --gradient-5: #FFC107;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -25,7 +25,11 @@ body, #root, .App {
 }
 
 .content {
-  padding-top: 68px; /* Adjust this value to match your header height */
+  padding-top: 68px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .multi-color-line {
@@ -77,12 +81,12 @@ body, #root, .App {
 
 .btn-primary {
   background-color: var(--brand-color);
-  color: var(--text-color);
+  color: #FFFFFF;
 }
 
 .btn-secondary {
   background-color: var(--secondary-color);
-  color: var(--text-color);
+  color: #FFFFFF;
 }
 
 .card {
@@ -106,6 +110,23 @@ body, #root, .App {
   border-radius: 50%;
   font-size: 0.8rem;
   font-weight: bold;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-top: 60px;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
 }
 
 /* ... (keep other existing styles) ... */

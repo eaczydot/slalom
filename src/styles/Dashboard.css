@@ -1,344 +1,110 @@
 :root {
-  --brand-color: #0C64FA; /* Updated to Slalom's brand color */
-  --background-color: #002033; /* Keep existing */
-  --text-color: #FFFFFF; /* Keep existing */
-  --card-background: #003A5C; /* Keep existing */
-  --border-color: #004B73; /* Keep existing */
-  --shadow-color: rgba(0, 0, 0, 0.2); /* Keep existing */
-  --accent-color: #83B4DE; /* Updated to Slalom's accent color */
-  --secondary-color: #00A9E0; /* Keep existing */
-  --gradient-1: #83B4DE; /* Updated to Slalom's accent color */
-  --gradient-2: #FFB400; /* Keep existing */
-  --gradient-3: #007A87; /* Keep existing */
-  --gradient-4: #8CE071; /* Keep existing */
-  --gradient-5: #7B0051; /* Keep existing */
-  
-  /* Light mode variables */
-  --light-background-color: #F0F4F8; /* Keep existing */
-  --light-text-color: #333333; /* Keep existing */
-  --light-card-background: #FFFFFF; /* Keep existing */
-  --light-border-color: #E1E8ED; /* Keep existing */
+  --brand-color: #0C64FA;
+  --background-color: #FFFFFF;
+  --text-color: #333333;
+  --card-background: #F0F4F8;
+  --border-color: #E1E8ED;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --accent-color: #83B4DE;
+  --secondary-color: #00A9E0;
+  --font-family: 'Inter', sans-serif;
 }
 
 body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--background-color);
+  background-color: var(--background-color);
   color: var(--text-color);
-  font-family: 'Slalom Sans', Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.75rem;
-  margin: 0;
-}
-
-body.light-mode {
-  background-color: var(--light-background-color);
-  color: var(--light-text-color);
-}
-
-body.light-mode .dashboard-item {
-  background-color: var(--light-card-background);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   font-family: var(--font-family);
 }
 
-.dashboard-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.dashboard {
+  padding: 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-item {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.dashboard-item h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   color: var(--text-color);
+}
+
+.large-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--brand-color);
+  margin: 0;
+}
+
+.trend {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.trend.positive {
+  color: #4CAF50;
+}
+
+.trend.negative {
+  color: #F44336;
 }
 
 .documents-to-sign {
   background-color: var(--card-background);
   border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 6px var(--shadow-color);
-}
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.dashboard-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.dashboard-item {
-  background-color: var(--card-background);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeIn 0.5s ease-out;
-}
-
-.dashboard-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px var(--shadow-color);
-}
-
-.dashboard-item-header {
-  display: flex;
-  align-items: center;
+  padding: 1rem;
   margin-bottom: 1rem;
 }
 
-.dashboard-item h2 {
-  font-size: 1.2rem;
+.documents-to-sign h2 {
+  font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color);
-  margin-left: 0.5rem;
-  font-family: var(--font-family);
 }
 
-.dashboard-emoji {
-  font-size: 2rem;
-  margin-right: 0.5rem;
-}
-
-.large-number {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--text-color);
-  margin: 0.5rem 0;
-}
-
-.trend {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.trend.up {
-  color: #4CAF50;
-}
-
-.trend.down {
-  color: var(--accent-color);
-}
-
-.trend.negative {
-  color: var(--secondary-color); /* Changed from #F44336 to var(--secondary-color) */
-}
-
-.dashboard-list {
+.documents-to-sign ul {
   list-style-type: none;
   padding: 0;
 }
 
-.dashboard-list-item {
+.documents-to-sign li {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.dashboard-list-item:last-child {
-  border-bottom: none;
-}
-
-.list-item-content {
-  flex: 1;
-}
-
-.list-item-header {
-  display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.item-thumbnail {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
-}
-
-.item-date {
-  font-size: 0.8rem;
-  color: var(--secondary-color);
-}
-
-.item-summary {
-  font-size: 0.9rem;
-  color: var(--text-color);
-  margin-top: 0.5rem;
-  line-height: 1.4;
-}
-
 .btn-sign {
-  background-color: var(--accent-color);
-  color: var(--text-color);
+  background-color: var(--brand-color);
+  color: #FFFFFF;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  align-self: center;
-}
-
-.btn-sign:hover {
-  animation: space-gradient 15s ease infinite;
-}
-
-.btn-sign:focus {
-  outline: 2px solid var(--text-color);
-  outline-offset: 2px;
-}
-
-.view-link {
-  color: var(--secondary-color);
+  border-radius: 20px;
   text-decoration: none;
   font-size: 0.8rem;
-  transition: all 0.3s ease;
-}
-
-.view-link:hover {
-  color: var(--accent-color);
-  animation: space-gradient 15s ease infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 600;
 }
 
 .valuation-chart {
   background-color: var(--card-background);
   border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px var(--shadow-color);
-  min-height: 300px;
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-}
-
-.chart-placeholder, .chart-error {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: var(--text-color);
-  font-size: 1rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
   padding: 1rem;
-  border-radius: 5px;
-}
-
-.chart-error {
-  color: var(--accent-color);
-}
-
-@media (max-width: 1200px) {
-  .dashboard-grid, .dashboard-details {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .valuation-chart {
-    grid-column: span 2;
-  }
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
-  .dashboard {
-    padding: 1rem;
-  }
-
-  .dashboard-grid, .dashboard-details {
+  .dashboard-grid {
     grid-template-columns: 1fr;
-  }
-
-  .dashboard-title {
-    font-size: 2rem;
-  }
-}
-
-/* Improve accessibility */
-.dashboard-item:focus-within {
-  outline: 2px solid var(--accent-color);
-}
-
-/* Customized scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--secondary-color);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-color);
-}
-
-/* Tooltip styles */
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: var(--card-background);
-  color: var(--text-color);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.dashboard-item {
-  animation: fadeIn 0.5s ease-out;
-}
-
-@media (max-width: 480px) {
-  .dashboard-title {
-    font-size: 1.8rem;
-  }
-
-  .large-number {
-    font-size: 1.5rem;
-  }
-
-  .dashboard-item {
-    padding: 1rem;
   }
 }

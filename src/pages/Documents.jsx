@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaFileAlt, FaFileContract, FaFileInvoiceDollar, FaFilePdf, FaDownload, FaComment, FaTag, FaHighlighter } from 'react-icons/fa';
 import '../styles/Documents.css';
 
@@ -8,6 +8,7 @@ function Documents() {
   const [comments, setComments] = useState({});
   const [tags, setTags] = useState({});
   const [highlights, setHighlights] = useState({});
+  const contentRef = useRef(null);
 
   const documents = [
     { id: 1, name: 'Q2 Financial Report', date: '2023-06-30', type: 'financial', status: 'available', content: 'This is the content of the Q2 Financial Report...' },
@@ -40,8 +41,12 @@ function Documents() {
   };
 
   const handleDownload = (document) => {
-    // Implement download functionality
-    console.log(`Downloading ${document.name}`);
+    const element = document.createElement("a");
+    const file = new Blob([document.content], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = `${document.name}.txt`;
+    document.body.appendChild(element);
+    element.click();
   };
 
   const handleComment = (documentId) => {
@@ -66,11 +71,15 @@ function Documents() {
 
   const handleHighlight = () => {
     const selection = window.getSelection();
-    const highlightedText = selection.toString();
-    if (highlightedText && selectedDocument) {
+    const range = selection.getRangeAt(0);
+    const span = document.createElement('span');
+    span.className = 'highlight';
+    range.surroundContents(span);
+    
+    if (selectedDocument) {
       setHighlights(prev => ({
         ...prev,
-        [selectedDocument.id]: [...(prev[selectedDocument.id] || []), highlightedText]
+        [selectedDocument.id]: [...(prev[selectedDocument.id] || []), selection.toString()]
       }));
     }
   };
@@ -106,37 +115,37 @@ function Documents() {
               <button onClick={() => handleTag(selectedDocument.id)} className="btn-action"><FaTag /> Tag</button>
               <button onClick={handleHighlight} className="btn-action"><FaHighlighter /> Highlight</button>
             </div>
-            <div className="document-content">
-              {selectedDocument.content}
+            <div className="document-content" ref={contentRef} dangerouslySetInnerHTML={{ __html: selectedDocument.content }}></div>
+            <div className="document-interactions">
+              {comments[selectedDocument.id] && (
+                <div className="document-comments">
+                  <h3>Comments</h3>
+                  <ul>
+                    {comments[selectedDocument.id].map((comment, index) => (
+                      <li key={index}>{comment}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {tags[selectedDocument.id] && (
+                <div className="document-tags">
+                  <h3>Tags</h3>
+                  {tags[selectedDocument.id].map((tag, index) => (
+                    <span key={index} className="tag">{tag}</span>
+                  ))}
+                </div>
+              )}
+              {highlights[selectedDocument.id] && (
+                <div className="document-highlights">
+                  <h3>Highlights</h3>
+                  <ul>
+                    {highlights[selectedDocument.id].map((highlight, index) => (
+                      <li key={index}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-            {comments[selectedDocument.id] && (
-              <div className="document-comments">
-                <h3>Comments</h3>
-                <ul>
-                  {comments[selectedDocument.id].map((comment, index) => (
-                    <li key={index}>{comment}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {tags[selectedDocument.id] && (
-              <div className="document-tags">
-                <h3>Tags</h3>
-                {tags[selectedDocument.id].map((tag, index) => (
-                  <span key={index} className="tag">{tag}</span>
-                ))}
-              </div>
-            )}
-            {highlights[selectedDocument.id] && (
-              <div className="document-highlights">
-                <h3>Highlights</h3>
-                <ul>
-                  {highlights[selectedDocument.id].map((highlight, index) => (
-                    <li key={index}>{highlight}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </div>
         )}
       </div>

@@ -22,6 +22,7 @@ const Header = memo(function Header({ unsignedDocuments }) {
                 {unsignedDocuments > 0 && <span className="badge">{unsignedDocuments}</span>}
               </NavLink>
             </li>
+            <li><NavLink to="/profile">Profile</NavLink></li>
           </ul>
         </nav>
       </div>

@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
-    port: 0, // This tells Vite to use any available port
+    port: 3000, // or any other specific port you prefer
   },
   build: {
     sourcemap: true,

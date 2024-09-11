@@ -107,4 +107,12 @@ body {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
+
+  .documents-to-sign {
+    padding: 1rem;
+  }
+
+  .valuation-chart {
+    padding: 1rem;
+  }
 }

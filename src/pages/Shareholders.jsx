@@ -1,60 +1,45 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import '../styles/Shareholders.css';
 
-const shareholderData = [
-  { name: 'John Doe', type: 'individual', shares: 1000, percentage: 5 },
-  { name: 'Jane Smith', type: 'individual', shares: 2000, percentage: 10 },
-  { name: 'Acme Corp', type: 'institutional', shares: 5000, percentage: 25 },
-  { name: 'Global Investments', type: 'institutional', shares: 8000, percentage: 40 },
-  { name: 'Employee Stock Plan', type: 'employee', shares: 4000, percentage: 20 },
-];
+function Shareholders() {
+  const [filter, setFilter] = useState('all');
 
-const Shareholders = () => {
-  const [filters, setFilters] = useState({
-    individual: true,
-    institutional: true,
-    employee: true,
-  });
+  const shareholders = [
+    { id: 1, name: 'John Doe', shares: 100000, percentage: '10%', class: 'Common' },
+    { id: 2, name: 'Jane Smith', shares: 50000, percentage: '5%', class: 'Preferred' },
+    { id: 3, name: 'Bob Johnson', shares: 75000, percentage: '7.5%', class: 'Common' },
+    { id: 4, name: 'Alice Brown', shares: 25000, percentage: '2.5%', class: 'Preferred' },
+  ];
 
-  const handleFilterChange = (filter) => {
-    setFilters(prev => ({ ...prev, [filter]: !prev[filter] }));
-  };
-
-  const filteredShareholders = useMemo(() => {
-    return shareholderData.filter(shareholder => filters[shareholder.type]);
-  }, [filters]);
+  const filteredShareholders = filter === 'all' 
+    ? shareholders 
+    : shareholders.filter(s => s.class.toLowerCase() === filter);
 
   return (
     <div className="shareholders">
-      <h1 className="page-title">Shareholders</h1>
+      <h1>Shareholders</h1>
       <div className="filter-section">
-        {Object.entries(filters).map(([key, value]) => (
-          <button
-            key={key}
-            className={`filter-btn btn ${value ? 'btn-primary space-gradient' : 'btn-secondary'}`}
-            onClick={() => handleFilterChange(key)}
-          >
-            {key.charAt(0).toUpperCase() + key.slice(1)}
-          </button>
-        ))}
+        <button className={`filter-btn ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>All</button>
+        <button className={`filter-btn ${filter === 'common' ? 'active' : ''}`} onClick={() => setFilter('common')}>Common</button>
+        <button className={`filter-btn ${filter === 'preferred' ? 'active' : ''}`} onClick={() => setFilter('preferred')}>Preferred</button>
       </div>
-      <div className="table-container card">
+      <div className="table-container">
         <table>
           <thead>
             <tr>
               <th>Name</th>
-              <th>Type</th>
               <th>Shares</th>
               <th>Percentage</th>
+              <th>Class</th>
             </tr>
           </thead>
           <tbody>
-            {filteredShareholders.map((shareholder, index) => (
-              <tr key={index}>
+            {filteredShareholders.map(shareholder => (
+              <tr key={shareholder.id}>
                 <td>{shareholder.name}</td>
-                <td>{shareholder.type}</td>
                 <td>{shareholder.shares.toLocaleString()}</td>
-                <td>{shareholder.percentage}%</td>
+                <td>{shareholder.percentage}</td>
+                <td>{shareholder.class}</td>
               </tr>
             ))}
           </tbody>
@@ -62,6 +47,6 @@ const Shareholders = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Shareholders;

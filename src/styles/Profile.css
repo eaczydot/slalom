@@ -1,5 +1,7 @@
 .profile {
-  padding: 2rem 0;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .profile-content {
@@ -8,63 +10,38 @@
   margin-bottom: 2rem;
 }
 
-.profile-info {
+.profile-info, .shareholding-info {
   flex: 1;
-  display: flex;
-  gap: 2rem;
+  background-color: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px var(--shadow-color);
 }
 
 .profile-picture img {
-  border-radius: 50%;
   width: 150px;
   height: 150px;
+  border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 1rem;
 }
 
 .profile-details h2 {
   margin-top: 0;
 }
 
-.shareholding-info {
-  flex: 1;
-}
-
 .edit-profile-btn {
-  padding: 0.75rem 1.5rem;
   background-color: var(--brand-color);
   color: white;
   border: none;
-  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.3s;
-}
-
-.edit-profile-btn:hover {
-  background-color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
-  .profile {
-    padding: 1rem 0;
-  }
-
   .profile-content {
     flex-direction: column;
-  }
-
-  .profile-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-picture {
-    margin-bottom: 1rem;
-  }
-
-  .shareholding-info {
-    margin-top: 1rem;
   }
 }

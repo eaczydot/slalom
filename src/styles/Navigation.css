@@ -1,0 +1,35 @@
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 1rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  background-color: var(--brand-color);
+  color: var(--background-color);
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navigation a {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

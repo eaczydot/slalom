@@ -1,5 +1,5 @@
 .shareholders {
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
 .filter-section {
@@ -18,35 +18,12 @@
   overflow-x: auto;
 }
 
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
+/* Remove table styles from here as they are now in App.css */
 
-th, td {
-  padding: 1rem;
-  text-align: left;
-}
-
-th {
-  background-color: var(--secondary-color);
-  color: #FFFFFF;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-}
-
-td {
-  border-bottom: 1px solid var(--border-color);
-}
-
-tr:last-child td {
-  border-bottom: none;
-}
-
-tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.05);
+@media (prefers-color-scheme: dark) {
+  .shareholders {
+    background-color: var(--dark-background-color);
+  }
 }
 
 @media (max-width: 768px) {
@@ -60,9 +37,5 @@ tr:nth-child(even) {
 
   .filter-btn {
     width: 100%;
-  }
-
-  th, td {
-    padding: 0.75rem;
   }
 }

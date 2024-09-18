@@ -1,6 +1,6 @@
 .dashboard {
-  background-color: var(--primary-color);
-  color: var(--background-color);
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 2rem;
   font-family: 'Inter', sans-serif;
 }
@@ -33,13 +33,13 @@
 .dashboard-item h2 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .large-number {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--brand-color);
   margin: 0;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .trend.negative {
-  color: var(--secondary-color); /* Changed from #F44336 to var(--secondary-color) */
+  color: var(--secondary-color);
 }
 
 .trend.neutral {
@@ -251,7 +251,6 @@
 .documents {
   padding: 2rem;
   font-family: var(--font-family);
-  color: var(--text-color);
 }
 
 .document-tabs {
@@ -334,7 +333,7 @@
 }
 
 .signature-needed {
-  color: var(--brand-color); /* Changed from var(--accent-color) to var(--brand-color) */
+  color: var(--brand-color);
   font-weight: 600;
   font-size: 0.9rem;
   display: block;
@@ -342,7 +341,7 @@
 }
 
 .document-item .btn {
-  background-color: var(--brand-color); /* Changed from var(--accent-color) to var(--brand-color) */
+  background-color: var(--brand-color);
   color: var(--text-color);
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -491,5 +490,66 @@
 
   .btn-action {
     flex: 1 0 calc(50% - 0.5rem);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dashboard {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+  }
+
+  .dashboard-item {
+    background-color: var(--dark-card-background);
+    color: var(--dark-text-color);
+    box-shadow: 0 4px 6px var(--dark-shadow-color);
+  }
+
+  .dashboard-item:hover {
+    box-shadow: 0 6px 12px var(--dark-shadow-color);
+  }
+
+  .feature-highlight {
+    background-color: var(--dark-card-background);
+    color: var(--dark-text-color);
+  }
+
+  .management-insights {
+    background-color: var(--dark-card-background);
+  }
+
+  .document-viewer {
+    background-color: var(--dark-card-background);
+    box-shadow: 0 4px 6px var(--dark-shadow-color);
+  }
+
+  .document-content {
+    background-color: var(--dark-content-background);
+    color: var(--dark-text-color);
+  }
+
+  .document-comments, .document-tags, .document-highlights {
+    background-color: var(--dark-card-background);
+  }
+
+  .document-comments li, .document-highlights li {
+    background-color: var(--dark-content-background);
+  }
+
+  .document-tags .tag {
+    background-color: var(--accent-color);
+    color: var(--dark-text-color);
+  }
+
+  .highlight {
+    background-color: rgba(255, 255, 0, 0.2);
+  }
+
+  .btn-action {
+    background-color: var(--brand-color);
+  }
+
+  .btn-action:hover {
+    background-color: var(--accent-color);
   }
 }

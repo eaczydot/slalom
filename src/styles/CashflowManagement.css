@@ -1,0 +1,26 @@
+.cashflow-management {
+  padding: 2rem;
+}
+
+.cashflow-chart {
+  margin-bottom: 2rem;
+}
+
+.financial-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+}

@@ -2,38 +2,198 @@
   --brand-color: #0C64FA;
   --background-color: #FFFFFF;
   --text-color: #333333;
-  --card-background: #F0F4F8;
+  --card-background: #F8F9FA;
   --border-color: #E1E8ED;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.05);
   --accent-color: #83B4DE;
   --secondary-color: #00A9E0;
+  --button-background: #0C64FA;
+  --button-text: #FFFFFF;
+  --table-header-background: #F0F4F8;
+  --table-row-hover: #F5F8FA;
   --font-family: 'Inter', sans-serif;
+  --dark-background-color: #1a1a1a;
+  --dark-text-color: #ffffff;
+  --dark-card-background: #2a2a2a;
+  --dark-border-color: #444444;
+  --dark-shadow-color: rgba(0, 0, 0, 0.2);
+  --dark-table-header-background: #333333;
+  --dark-table-row-hover: #3a3a3a;
 }
 
 body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 68px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+button, .btn {
   font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  background-color: var(--button-background);
+  color: var(--button-text);
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  background-color: var(--accent-color);
+}
+
+a {
+  color: var(--brand-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+.card {
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--table-header-background);
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+  }
+
+  .card, table {
+    background-color: var(--dark-card-background);
+    box-shadow: 0 2px 4px var(--dark-shadow-color);
+  }
+
+  th {
+    background-color: var(--dark-table-header-background);
+    color: var(--dark-text-color);
+  }
+
+  td {
+    border-bottom: 1px solid var(--dark-border-color);
+  }
+
+  tr:hover {
+    background-color: var(--dark-table-row-hover);
+  }
+
+  button, .btn {
+    background-color: var(--brand-color);
+    color: var(--dark-text-color);
+  }
+
+  button:hover, .btn:hover {
+    background-color: var(--accent-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 10px;
+  }
 }
 
 .dashboard {
-  padding: 1rem;
-  max-width: 100%;
+  padding: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.dashboard h1 {
+  color: var(--brand-color);
+  margin-bottom: 2rem;
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .dashboard-item {
   background-color: var(--card-background);
+  padding: 1.5rem;
   border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px var(--shadow-color);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.dashboard-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.dashboard-icon {
+  font-size: 2rem;
+  color: var(--brand-color);
+  margin-bottom: 1rem;
 }
 
 .dashboard-item h2 {
@@ -43,14 +203,14 @@ body {
 }
 
 .large-number {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: var(--brand-color);
-  margin: 0;
+  margin: 0.5rem 0;
 }
 
 .trend {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
 }
 
@@ -62,57 +222,254 @@ body {
   color: #F44336;
 }
 
-.documents-to-sign {
+.dashboard-section {
   background-color: var(--card-background);
   border-radius: 10px;
-  padding: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.dashboard-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--brand-color);
   margin-bottom: 1rem;
 }
 
-.documents-to-sign h2 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+.documents-to-sign table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-.documents-to-sign ul {
-  list-style-type: none;
-  padding: 0;
+.documents-to-sign th,
+.documents-to-sign td {
+  padding: 0.75rem;
+  text-align: left;
 }
 
-.documents-to-sign li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+.documents-to-sign th {
+  background-color: var(--table-header-background);
+  font-weight: 600;
+}
+
+.documents-to-sign tr:nth-child(even) {
+  background-color: var(--table-row-hover);
 }
 
 .btn-sign {
   background-color: var(--brand-color);
-  color: #FFFFFF;
+  color: white;
   padding: 0.5rem 1rem;
-  border-radius: 20px;
+  border-radius: 5px;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+}
+
+.btn-sign:hover {
+  background-color: var(--accent-color);
 }
 
 .valuation-chart {
-  background-color: var(--card-background);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  height: 400px;
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.quick-actions .btn {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
-  .documents-to-sign {
-    padding: 1rem;
+  .quick-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dashboard-item,
+  .dashboard-section {
+    background-color: var(--dark-card-background);
+    color: var(--dark-text-color);
   }
 
-  .valuation-chart {
-    padding: 1rem;
+  .dashboard-item h2,
+  .dashboard-section h2 {
+    color: var(--dark-text-color);
+  }
+
+  .documents-to-sign th {
+    background-color: var(--dark-table-header-background);
+  }
+
+  .documents-to-sign tr:nth-child(even) {
+    background-color: var(--dark-table-row-hover);
+  }
+
+  .btn-sign,
+  .quick-actions .btn {
+    background-color: var(--brand-color);
+    color: var(--dark-text-color);
+  }
+
+  .btn-sign:hover,
+  .quick-actions .btn:hover {
+    background-color: var(--accent-color);
+  }
+}
+
+.chat-interface {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.chat-message {
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  max-width: 80%;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chat-message.user {
+  background-color: var(--brand-color);
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-message.ai {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.chat-input button {
+  padding: 0.75rem 1rem;
+  background-color: var(--brand-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: var(--accent-color);
+}
+
+.preset-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.preset-questions button {
+  padding: 0.5rem 1rem;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.preset-questions button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat-interface {
+    background-color: var(--dark-card-background);
+  }
+
+  .chat-messages {
+    background-color: var(--dark-background-color);
+    border-color: var(--dark-border-color);
+  }
+
+  .chat-message.ai {
+    background-color: var(--accent-color);
+    color: var(--dark-text-color);
+  }
+
+  .chat-input input {
+    background-color: var(--dark-background-color);
+    color: var(--dark-text-color);
+    border-color: var(--dark-border-color);
+  }
+
+  .preset-questions button {
+    background-color: var(--secondary-color);
+    color: var(--dark-text-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-container {
+    height: 400px;
+  }
+
+  .preset-questions {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .preset-questions button {
+    flex: 0 0 auto;
   }
 }
